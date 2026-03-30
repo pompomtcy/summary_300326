@@ -11,22 +11,25 @@ discharge_date = st.date_input("Discharge date", value=None)
 
 st.subheader("Problem List Form")
 
-# เตรียม session state เก็บปัญหา
+st.title("Problem List Form")
+
+# ตรวจสอบ session_state และเริ่มต้นด้วย Problem 1
 if "problems" not in st.session_state:
-    st.session_state.problems = []
+    st.session_state.problems = [{"title": "", "detail": "", "management": ""}]
 
 # ฟังก์ชันเพิ่ม problem ใหม่
 def add_problem():
-    st.session_state.problems.append({"title": "", "detail": "", "treatment": ""})
+    st.session_state.problems.append({"title": "", "detail": "", "management": ""})
 
 # ปุ่มเพิ่ม problem
 st.button("Add Problem", on_click=add_problem)
 
-# แสดงปัญหาที่มี
+# แสดงปัญหาทั้งหมด
 for i, problem in enumerate(st.session_state.problems):
-    with st.expander(f"Problem {i+1}"):
-        problem["title"] = st.text_input(f"Title {i+1}", value=problem["title"], key=f"title_{i}")
-        problem["detail"] = st.text_area(f"Detail {i+1}", value=problem["detail"], key=f"detail_{i}")
-        problem["treatment"] = st.text_area(f"Treatment {i+1}", value=problem["treatment"], key=f"treatment_{i}")
+    with st.expander(f"Problem {i+1}", expanded=True):
+        problem["title"] = st.text_input("Title", value=problem["title"], key=f"title_{i}")
+        problem["detail"] = st.text_area("Detail", value=problem["detail"], key=f"detail_{i}")
+        problem["management"] = st.text_area("Management", value=problem["management"], key=f"management_{i}")
+
 
 
