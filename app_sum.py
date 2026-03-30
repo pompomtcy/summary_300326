@@ -37,6 +37,7 @@ agree_case3 = st.checkbox("Refer OPD case")
 if agree_case3:
     extra_text3 = st.text_input("FOR:")
     agree_case3 = st.checkbox("Refer OPD case")   
+agree_case4 = st.checkbox("Refer IPD case")  
 if agree_case4:
     extra_text41 = st.text_input("hospital:")
     extra_text42 = st.text_input("for:")
