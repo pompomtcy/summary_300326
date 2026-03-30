@@ -86,5 +86,9 @@ if st.button("Report"):
     output += f"{note}"
     st.text_area("Discharge Summary", output, height=600)
 
+if st.button("Save Report"):
+    filename =f"{name}_discharge_summary.txt"
+    filepath = os.path.join(SAVE_FOLDER, filename)
+    st.success(f"Report saved as {filename}")
 
 
