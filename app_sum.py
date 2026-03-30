@@ -14,7 +14,7 @@ discharge_date = st.date_input("Discharge date", value=None)
 st.subheader("Problem List Form")
 
 # ตรวจสอบ session_state และเริ่มต้นด้วย Problem 1
-if "problems" not in st.session_state:
+if "problems" not in st.session_state:https://github.com/pompomtcy/summary_300326/blob/main/app_sum.py
     st.session_state.problems = [{"title": "", "detail": "", "management": ""}]
 
 # ฟังก์ชันเพิ่ม problem ใหม่
@@ -48,8 +48,8 @@ if agree_case5:
 agree_case6 = st.checkbox("Death") 
 
 # --- ปุ่มแสดงผล ---
-if st.button("Show Form"):
-    output = f"ชื่อ: {name}\nผู้ป่วยเพศ: {gender}   อายุ: {age}\nU/D: {diagnosis}\n\n"
+if st.button("Report"):
+    output = f"{name}\nผู้ป่วยเพศ: {gender}   อายุ: {age}\nU/D: {underlying}\n\n"
     output += f"Admit วันที่: {admit_from} ถึง {admit_to}\n\n"
     
     output += "Problem list:\n"
