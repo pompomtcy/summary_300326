@@ -31,32 +31,51 @@ for i, problem in enumerate(st.session_state.problems):
 # ปุ่มเพิ่ม problem
 st.button("Add Problem", on_click=add_problem)
 
-agree_case1 = st.checkbox("D/C no F/U")
-agree_case2 = st.checkbox("D/C + F/U")
-if agree_case2:
-    extra_text2 = st.text_input("OPD:")
-agree_case3 = st.checkbox("Refer OPD case")   
-if agree_case3:
-    extra_text3 = st.text_input("FOR:") 
-agree_case4 = st.checkbox("Refer IPD case")  
-if agree_case4:
-    extra_text41 = st.text_input("hospital:")
-    extra_text42 = st.text_input("for:")
-agree_case5 = st.checkbox("D/C against advise") 
-if agree_case5:
-    extra_text5 = st.text_input("due to:")
-agree_case6 = st.checkbox("Death") 
+# --- Follow-up / Disposition ---
+cases = []
+
+if st.checkbox("D/C no F/U"):
+    cases.append("D/C no F/U")
+
+if st.checkbox("D/C + F/U"):
+    extra = st.text_input("OPD:")
+    cases.append(f"D/C + F/U: {extra}" if extra else "D/C + F/U")
+
+if st.checkbox("Refer OPD case"):
+    extra = st.text_input("FOR:")
+    cases.append(f"Refer OPD case: {extra}" if extra else "Refer OPD case")
+
+if st.checkbox("Refer IPD case"):
+    hospital = st.text_input("Hospital:")
+    for_whom = st.text_input("FOR:")
+    text = "Refer IPD case"
+    if hospital:
+        text += f" - Hospital: {hospital}"
+    if for_whom:
+        text += f" - FOR: {for_whom}"
+    cases.append(text)
+
+if st.checkbox("D/C against advise"):
+    extra = st.text_input("due to:")
+    cases.append(f"D/C against advise: {extra}" if extra else "D/C against advise")
+
+if st.checkbox("Death"):
+    cases.append("Death")
 
 # --- ปุ่มแสดงผล ---
 if st.button("Report"):
-    output = f"{name}\nผู้ป่วย{gender}   อายุ {age} ปี\nU/D: {underlying}\n\n"
+    output = f"{name}\nผู้ป่วย {gender}   อายุ {age} ปี\nU/D: {underlying}\n\n"
     output += f"Admit วันที่: {admit_date} ถึง {discharge_date}\n\n"
     output += "Problem list:\n"
     for i, problem in enumerate(st.session_state.problems, 1):
-        output += f"{i}.{problem['title']}\n"
-        output += f"{ problem['detail']}\n"
-        output += f" Mx: {problem['management']}\n\n"
-    if agree_case1: 
-        output = "D/C no F/U"
+        output += f"{i}. {problem['title']}\n"
+        output += f"   {problem['detail']}\n"
+        output += f"   Mx: {problem['management']}\n\n"
+    
+    if cases:
+        output += "Follow-up / Disposition:\n"
+        for item in cases:
+            output += f"- {item}\n"
+    
     st.text_area("Discharge Summary Preview", output, height=400)
 
