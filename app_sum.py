@@ -39,25 +39,25 @@ if st.checkbox("D/C no F/U"):
 
 if st.checkbox("D/C + F/U"):
     extra = st.text_input("OPD:")
-    cases.append(f"D/C + F/U: {extra}" if extra else "D/C + F/U")
+    cases.append(f"D/C + F/U {extra}" if extra else "D/C + F/U")
 
 if st.checkbox("Refer OPD case"):
     extra = st.text_input("FOR:")
-    cases.append(f"Refer OPD case: {extra}" if extra else "Refer OPD case")
+    cases.append(f"Refer OPD case {extra}" if extra else "Refer OPD case")
 
 if st.checkbox("Refer IPD case"):
     hospital = st.text_input("Hospital:")
     for_whom = st.text_input("FOR:")
-    text = "Refer IPD case"
+    text = "Refer IPD "
     if hospital:
-        text += f" - Hospital: {hospital}"
+        text += f" - โรงพยาบาล {hospital}"
     if for_whom:
-        text += f" - FOR: {for_whom}"
+        text += f" - for {for_whom}"
     cases.append(text)
 
 if st.checkbox("D/C against advise"):
     extra = st.text_input("due to:")
-    cases.append(f"D/C against advise: {extra}" if extra else "D/C against advise")
+    cases.append(f"D/C against advise due to {extra}" if extra else "D/C against advise")
 
 if st.checkbox("Death"):
     cases.append("Death")
