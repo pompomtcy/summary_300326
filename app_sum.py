@@ -52,4 +52,6 @@ if st.button("Report"):
     output = f"{name}\nผู้ป่วยเพศ: {gender}   อายุ: {age}\nU/D: {underlying}\n\n"
     output += f"Admit วันที่: {admit_date} ถึง {discharge_date}\n\n"
     
-    
+# แสดงผลเป็นข้อความเหมือนฟอร์ม
+st.text_area("Discharge Summary Preview", output, height=400)
+
