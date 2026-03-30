@@ -56,5 +56,7 @@ if st.button("Report"):
         output += f"{i}.{problem['title']}\n"
         output += f"{ problem['detail']}\n"
         output += f" Mx: {problem['management']}\n\n"
+    if agree_case1: 
+    output = "D/C no F/U"
     st.text_area("Discharge Summary Preview", output, height=400)
 
