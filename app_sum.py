@@ -19,15 +19,15 @@ if "problems" not in st.session_state:
 def add_problem():
     st.session_state.problems.append({"title": "", "detail": "", "management": ""})
 
-# ปุ่มเพิ่ม problem
-st.button("Add Problem", on_click=add_problem)
-
 # แสดงปัญหาทั้งหมด
 for i, problem in enumerate(st.session_state.problems):
     with st.expander(f"Problem {i+1}", expanded=True):
         problem["title"] = st.text_input("Title", value=problem["title"], key=f"title_{i}")
         problem["detail"] = st.text_area("Detail", value=problem["detail"], key=f"detail_{i}")
         problem["management"] = st.text_area("Management", value=problem["management"], key=f"management_{i}")
+
+# ปุ่มเพิ่ม problem
+st.button("Add Problem", on_click=add_problem)
 
 
 
