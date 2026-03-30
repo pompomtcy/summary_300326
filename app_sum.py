@@ -65,6 +65,7 @@ if st.checkbox("Death"):
 note = st.text_input("Note")
 
 # --- ปุ่มแสดงผล ---
+output = "" 
 if st.button("Report"):
     output = f"{name}\nผู้ป่วย {gender}   อายุ {age} ปี\nU/D: {underlying}\n\n"
     output += f"Admit วันที่ {admit_date} ถึง {discharge_date}\n\n"
