@@ -2,9 +2,10 @@ import streamlit as st
 import os
 from datetime import date
 
-# กำหนดชื่อโฟลเดอร์
-SAVE_FOLDER = "reports"
+# --- Folder สำหรับเก็บ report ---
+SAVE_FOLDER = os.path.join(os.getcwd(), "reports")
 os.makedirs(SAVE_FOLDER, exist_ok=True)
+
 
 st.title("My Discharge Summary 🚀")
 name = st.text_input("Patient's name")
@@ -100,9 +101,26 @@ if st.button("Report"):
     output += f"{note}"
     st.text_area("Discharge Summary", output, height=600)
 
+# --- ปุ่ม Save Report ---
 if st.button("Save Report"):
-    filename =f"{name}_discharge_summary.txt"
+    filename = f"{name}_dc.txt"
     filepath = os.path.join(SAVE_FOLDER, filename)
+    with open(filepath, "w", encoding="utf-8") as f:
+        f.write(f"Patient: {name}\nGender: {gender}\nAge: {age}\n\n")
+        f.write(problem)
     st.success(f"Report saved as {filename}")
 
+# --- Sidebar แสดงไฟล์ทั้งหมด ---
+st.sidebar.header("Saved Reports")
+files = os.listdir(SAVE_FOLDER)  # อ่านไฟล์ใหม่ทุกครั้ง
+if files:
+    for f in files:
+        file_path = os.path.join(SAVE_FOLDER, f)
+        if st.sidebar.button(f"View {f}"):
+            with open(file_path, "r", encoding="utf-8") as file:
+                content = file.read()
+            st.subheader(f"Report: {f}")
+            st.text_area(f"Content of {f}", content, height=400)
+else:
+    st.sidebar.text("No reports yet")
 
