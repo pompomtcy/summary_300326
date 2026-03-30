@@ -83,7 +83,7 @@ if st.button("Report"):
 #download
 st.download_button(
     label="Download Report as TXT",
-    data=output,          # ข้อความ report
+    data=output,         
     file_name=f"{name}_dc.txt",
     mime="text/plain"
 )
