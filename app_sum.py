@@ -1,5 +1,16 @@
 import streamlit as st
+import os
 from datetime import date
+
+# กำหนดชื่อโฟลเดอร์
+SAVE_FOLDER = "reports"
+
+# สร้างโฟลเดอร์ ถ้ายังไม่มี
+if not os.path.exists(SAVE_FOLDER):
+    os.makedirs(SAVE_FOLDER)
+    st.success(f"Folder '{SAVE_FOLDER}' created successfully!")
+else:
+    st.info(f"Folder '{SAVE_FOLDER}' already exists.")
 
 st.title("My Discharge Summary 🚀")
 name = st.text_input("Patient's name")
@@ -81,11 +92,5 @@ if st.button("Report"):
     output += f"{note}"
     st.text_area("Discharge Summary", output, height=600)
 
-#download
-st.download_button(
-    label="Download Report as TXT",
-    data=output,         
-    file_name=f"{name}_dc.txt",
-    mime="text/plain"
-)
+
 
