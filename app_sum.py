@@ -29,10 +29,4 @@ for i, problem in enumerate(st.session_state.problems):
         problem["detail"] = st.text_area(f"Detail {i+1}", value=problem["detail"], key=f"detail_{i}")
         problem["treatment"] = st.text_area(f"Treatment {i+1}", value=problem["treatment"], key=f"treatment_{i}")
 
-# แสดงผลตอนสุดท้าย (เช็คว่าเก็บได้ถูกต้อง)
-if st.session_state.problems:
-    st.subheader("Summary of Problems")
-    for i, problem in enumerate(st.session_state.problems):
-        st.write(f"**Problem {i+1}:** {problem['title']}")
-        st.write(f"- Detail: {problem['detail']}")
-        st.write(f"- Treatment: {problem['treatment']}")
+
