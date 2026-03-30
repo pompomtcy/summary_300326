@@ -62,6 +62,8 @@ if st.checkbox("D/C against advise"):
 if st.checkbox("Death"):
     cases.append("Death")
 
+note = st.text_input("Note")
+
 # --- ปุ่มแสดงผล ---
 if st.button("Report"):
     output = f"{name}\nผู้ป่วย {gender}   อายุ {age} ปี\nU/D: {underlying}\n\n"
