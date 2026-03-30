@@ -80,3 +80,11 @@ if st.button("Report"):
     output += f"{note}"
     st.text_area("Discharge Summary", output, height=600)
 
+#download
+st.download_button(
+    label="Download Report as TXT",
+    data=output,          # ข้อความ report
+    file_name=f"{name}_dc.txt",
+    mime="text/plain"
+)
+
