@@ -14,7 +14,7 @@ discharge_date = st.date_input("Discharge date", value=None)
 st.subheader("Problem List Form")
 
 # ตรวจสอบ session_state และเริ่มต้นด้วย Problem 1
-if "problems" not in st.session_state:https://github.com/pompomtcy/summary_300326/blob/main/app_sum.py
+if "problems" not in st.session_state:
     st.session_state.problems = [{"title": "", "detail": "", "management": ""}]
 
 # ฟังก์ชันเพิ่ม problem ใหม่
