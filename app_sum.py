@@ -30,7 +30,7 @@ for i, problem in enumerate(st.session_state.problems):
 st.button("Add Problem", on_click=add_problem)
 
 agree_case1 = st.checkbox("D/C no F/U")
-agree_case2 = st.checkbox("D/C + F/U ")
+agree_case2 = st.checkbox("D/C + F/U")
 if agree_case2:
     extra_text2 = st.text_input("OPD:")
 agree_case3 = st.checkbox("Refer OPD case")   
