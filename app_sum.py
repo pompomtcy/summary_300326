@@ -73,9 +73,8 @@ if st.button("Report"):
         output += f"   Mx: {problem['management']}\n\n"
     
     if cases:
-        output += "Follow-up / Disposition:\n"
         for item in cases:
             output += f"- {item}\n"
     
-    st.text_area("Discharge Summary Preview", output, height=400)
+    st.text_area("Discharge Summary", output, height=400)
 
