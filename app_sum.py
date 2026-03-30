@@ -1,4 +1,6 @@
 import streamlit as st
+from datetime import date
+
 st.title("My Discharge Summary 🚀")
 name = st.text_input("Patient's name")
 age = st.text_input("Age")
@@ -44,4 +46,23 @@ agree_case5 = st.checkbox("D/C against advise")
 if agree_case5:
     extra_text5 = st.text_input("due to:")
 agree_case6 = st.checkbox("Death") 
+
+# --- ปุ่มแสดงผล ---
+if st.button("Show Form"):
+    output = f"ชื่อ: {name}\nผู้ป่วยเพศ: {gender}   อายุ: {age}\nU/D: {diagnosis}\n\n"
+    output += f"Admit วันที่: {admit_from} ถึง {admit_to}\n\n"
+    
+    output += "Problem list:\n"
+    for i, problem in enumerate(st.session_state.problems, 1):
+        output += f"{i}. {problem['title']}\n"
+        output += f"   Detail: {problem['detail']}\n"
+        output += f"   Management: {problem['management']}\n\n"
+    
+    if followup_choices:
+        output += "Follow-up / Disposition:\n"
+        for choice in followup_choices:
+            output += f"- {choice}\n"
+
+    # แสดงผลเป็นข้อความเหมือนฟอร์ม
+    st.text_area("Discharge Summary Preview", output, height=400)
     
