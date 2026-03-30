@@ -78,5 +78,5 @@ if st.button("Report"):
         for item in cases:
             output += f"- {item}\n\n"
     output += f"{note}"
-    st.text_area("Discharge Summary", output, height=400)
+    st.text_area("Discharge Summary", output, height=600)
 
