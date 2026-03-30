@@ -11,28 +11,28 @@ discharge_date = st.date_input("Discharge date", value=None)
 
 st.subheader("Problem List Form")
 
-# ตรวจสอบ session_state
+# เตรียม session state เก็บปัญหา
 if "problems" not in st.session_state:
     st.session_state.problems = []
 
 # ฟังก์ชันเพิ่ม problem ใหม่
 def add_problem():
-    st.session_state.problems.append({"title": "", "detail": "", "management": ""})
+    st.session_state.problems.append({"title": "", "detail": "", "treatment": ""})
 
 # ปุ่มเพิ่ม problem
 st.button("Add Problem", on_click=add_problem)
 
-# แสดงปัญหา
+# แสดงปัญหาที่มี
 for i, problem in enumerate(st.session_state.problems):
-    with st.expander(f"Problem {i+1}", expanded=True):
-        problem["title"] = st.text_input("Title", value=problem["title"], key=f"title_{i}")
-        problem["detail"] = st.text_area("Detail", value=problem["detail"], key=f"detail_{i}")
-        problem["management"] = st.text_area("Management", value=problem["management"], key=f"management_{i}")
+    with st.expander(f"Problem {i+1}"):
+        problem["title"] = st.text_input(f"Title {i+1}", value=problem["title"], key=f"title_{i}")
+        problem["detail"] = st.text_area(f"Detail {i+1}", value=problem["detail"], key=f"detail_{i}")
+        problem["treatment"] = st.text_area(f"Treatment {i+1}", value=problem["treatment"], key=f"treatment_{i}")
 
-# สรุปข้อมูล
+# แสดงผลตอนสุดท้าย (เช็คว่าเก็บได้ถูกต้อง)
 if st.session_state.problems:
     st.subheader("Summary of Problems")
     for i, problem in enumerate(st.session_state.problems):
-        st.markdown(f"**Problem {i+1}: {problem['title']}**")
-        st.markdown(f"- Detail: {problem['detail']}")
-        st.markdown(f"- Management: {problem['management']}")
+        st.write(f"**Problem {i+1}:** {problem['title']}")
+        st.write(f"- Detail: {problem['detail']}")
+        st.write(f"- Treatment: {problem['treatment']}")
