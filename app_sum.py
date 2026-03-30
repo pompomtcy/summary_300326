@@ -50,7 +50,7 @@ agree_case6 = st.checkbox("Death")
 # --- ปุ่มแสดงผล ---
 if st.button("Report"):
     output = f"{name}\nผู้ป่วยเพศ: {gender}   อายุ: {age}\nU/D: {underlying}\n\n"
-    output += f"Admit วันที่: {admit_from} ถึง {admit_to}\n\n"
+    output += f"Admit วันที่: {admit_date} ถึง {discharge_date}\n\n"
     
     output += "Problem list:\n"
     for i, problem in enumerate(st.session_state.problems, 1):
