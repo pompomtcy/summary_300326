@@ -92,8 +92,7 @@ if st.button("Save Report"):
     filename = f"{name}_dc.txt"
     filepath = os.path.join(SAVE_FOLDER, filename)
     with open(filepath, "w", encoding="utf-8") as f:
-        f.write(f"Patient: {name}\nGender: {gender}\nAge: {age}\n\n")
-        f.write(problem)
+        f.write(output)
     st.success(f"Report saved as {filename}")
 # --- Sidebar แสดงไฟล์ทั้งหมด ---
 st.sidebar.header("Saved Reports")
