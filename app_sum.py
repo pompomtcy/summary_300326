@@ -105,6 +105,11 @@ if files:
                 content = file.read()
             st.subheader(f"Report: {f}")
             st.text_area(f"Content of {f}", content, height=400)
+ # ปุ่ม Delete
+        if st.sidebar.button(f"Delete {f}"):
+            os.remove(file_path)
+            st.sidebar.success(f"{f} has been deleted")
+            st.experimental_rerun()  # รีเฟรชเว็บเพื่ออัปเดตรายชื่อไฟล์
 else:
     st.sidebar.text("No reports yet")
 
