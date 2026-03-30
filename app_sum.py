@@ -105,11 +105,15 @@ if files:
                 content = file.read()
             st.subheader(f"Report: {f}")
             st.text_area(f"Content of {f}", content, height=400)
- # ปุ่ม Delete
-        if st.sidebar.button(f"Delete {f}"):
-            os.remove(file_path)
-            st.sidebar.success(f"{f} has been deleted")
-            st.experimental_rerun()  # รีเฟรชเว็บเพื่ออัปเดตรายชื่อไฟล์
+ if files:
+    # เลือกไฟล์ที่ต้องการลบ
+    files_to_delete = st.sidebar.multiselect("Select reports to delete", files)
+    
+    if st.sidebar.button("Delete Selected"):
+        for f in files_to_delete:
+            os.remove(os.path.join(SAVE_FOLDER, f))
+        st.sidebar.success(f"Deleted {len(files_to_delete)} file(s)")
+        st.experimental_rerun()  # รีเฟรชหน้าเว็บ
 else:
     st.sidebar.text("No reports yet")
 
