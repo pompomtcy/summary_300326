@@ -5,7 +5,7 @@ st.title("My Discharge Summary 🚀")
 name = st.text_input("Patient's name")
 age = st.text_input("Age")
 
-gender = st.radio("Gender", ["Male", "Female"], horizontal=True)
+gender = st.radio("Gender", ["ชาย", "หญิง"], horizontal=True)
 underlying = st.text_input("U/D")
 history = st.text_input("Present illness")
 admit_date = st.date_input("Admit date", value=None)
@@ -49,7 +49,7 @@ agree_case6 = st.checkbox("Death")
 
 # --- ปุ่มแสดงผล ---
 if st.button("Report"):
-    output = f"{name}\nผู้ป่วยเพศ: {gender}   อายุ: {age}\nU/D: {underlying}\n\n"
+    output = f"{name}\nผู้ป่วยเพศ{gender}   อายุ: {age}'ปี'\nU/D: {underlying}\n\n"
     output += f"Admit วันที่: {admit_date} ถึง {discharge_date}\n\n"
     
 # แสดงผลเป็นข้อความเหมือนฟอร์ม
