@@ -32,5 +32,12 @@ st.button("Add Problem", on_click=add_problem)
 agree_case1 = st.checkbox("D/C no F/U")
 agree_case2 = st.checkbox("D/C + F/U ")
 if agree_case2:
-    extra_text = st.text_input("OPD:")
-    
+    extra_text2 = st.text_input("OPD:")
+agree_case3 = st.checkbox("Refer OPD case")   
+if agree_case3:
+    extra_text3 = st.text_input("FOR:")
+    agree_case3 = st.checkbox("Refer OPD case")   
+if agree_case4:
+    extra_text41 = st.text_input("hospital:")
+    extra_text42 = st.text_input("for:")
+
