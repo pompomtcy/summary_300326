@@ -33,6 +33,20 @@ for i, problem in enumerate(st.session_state.problems):
         problem["detail"] = st.text_area("Detail", value=problem["detail"], key=f"detail_{i}")
         problem["management"] = st.text_area("Management", value=problem["management"], key=f"management_{i}")
 
+st.sidebar.header("Saved Reports")
+files = os.listdir(SAVE_FOLDER)
+if files:
+    for f in files:
+        file_path = os.path.join(SAVE_FOLDER, f)
+        # คลิกชื่อไฟล์เพื่อ preview
+        if st.sidebar.button(f"View {f}"):
+            with open(file_path, "r", encoding="utf-8") as file:
+                content = file.read()
+            st.subheader(f"Report: {f}")
+            st.text_area(f"Content of {f}", content, height=400)
+else:
+    st.sidebar.text("No reports yet")
+
 # ปุ่มเพิ่ม problem
 st.button("Add Problem", on_click=add_problem)
 
