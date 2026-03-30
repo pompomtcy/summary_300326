@@ -12,6 +12,11 @@ if not os.path.exists(SAVE_FOLDER):
 else:
     st.info(f"Folder '{SAVE_FOLDER}' already exists.")
 
+# --- แสดง path ใน sidebar ---
+st.sidebar.header("Reports Folder Path")
+folder_path = os.path.abspath(SAVE_FOLDER)  # path เต็ม
+st.sidebar.text(folder_path)
+
 st.title("My Discharge Summary 🚀")
 name = st.text_input("Patient's name")
 age = st.text_input("Age")
