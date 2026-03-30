@@ -94,10 +94,22 @@ if st.button("Save Report"):
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(output)
     st.success(f"Report saved as {filename}")
-# --- Sidebar แสดงไฟล์ทั้งหมด ---
+
+# --- Sidebar สำหรับดู / ลบ report ---
 st.sidebar.header("Saved Reports")
-files = os.listdir(SAVE_FOLDER)  # อ่านไฟล์ใหม่ทุกครั้ง
+files = os.listdir(SAVE_FOLDER)
 if files:
+    # เลือกไฟล์ที่จะลบ
+    files_to_delete = st.sidebar.multiselect("Select reports to delete", files)
+    
+    # ปุ่มลบ
+    if st.sidebar.button("Delete Selected"):
+        for f in files_to_delete:
+            os.remove(os.path.join(SAVE_FOLDER, f))
+        st.sidebar.success(f"Deleted {len(files_to_delete)} file(s)")
+        st.experimental_rerun()
+
+    # ปุ่มดูไฟล์
     for f in files:
         file_path = os.path.join(SAVE_FOLDER, f)
         if st.sidebar.button(f"View {f}"):
@@ -105,15 +117,5 @@ if files:
                 content = file.read()
             st.subheader(f"Report: {f}")
             st.text_area(f"Content of {f}", content, height=400)
- if files:
-    # เลือกไฟล์ที่ต้องการลบ
-    files_to_delete = st.sidebar.multiselect("Select reports to delete", files)
-    
-    if st.sidebar.button("Delete Selected"):
-        for f in files_to_delete:
-            os.remove(os.path.join(SAVE_FOLDER, f))
-        st.sidebar.success(f"Deleted {len(files_to_delete)} file(s)")
-        st.experimental_rerun()  # รีเฟรชหน้าเว็บ
 else:
     st.sidebar.text("No reports yet")
-
