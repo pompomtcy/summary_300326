@@ -54,8 +54,8 @@ if st.button("Report"):
     output += "Problem list:\n"
     for i, problem in enumerate(st.session_state.problems, 1):
         output += f"{i}.{problem['title']}\n"
-        output += f"{problem['detail']}\n"
-        output += f"Mx: {problem['management']}\n\n"
+        output += f"{ problem['detail']}\n"
+        output += f" Mx: {problem['management']}\n\n"
     
 # แสดงผลเป็นข้อความเหมือนฟอร์ม
 st.text_area("Discharge Summary Preview", output, height=400)
