@@ -9,7 +9,7 @@ history = st.text_input("Present illness")
 admit_date = st.date_input("Admit date", value=None)
 discharge_date = st.date_input("Discharge date", value=None)
 
-st.title("Problem List Form")
+st.subheader("Problem List Form")
 
 # เตรียม session state เก็บปัญหา
 if "problems" not in st.session_state:
