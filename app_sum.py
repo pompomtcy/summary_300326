@@ -4,18 +4,7 @@ from datetime import date
 
 # กำหนดชื่อโฟลเดอร์
 SAVE_FOLDER = "reports"
-
-# สร้างโฟลเดอร์ ถ้ายังไม่มี
-if not os.path.exists(SAVE_FOLDER):
-    os.makedirs(SAVE_FOLDER)
-    st.success(f"Folder '{SAVE_FOLDER}' created successfully!")
-else:
-    st.info(f"Folder '{SAVE_FOLDER}' already exists.")
-
-# --- แสดง path ใน sidebar ---
-st.sidebar.header("Reports Folder Path")
-folder_path = os.path.abspath(SAVE_FOLDER)  # path เต็ม
-st.sidebar.text(folder_path)
+os.makedirs(SAVE_FOLDER, exist_ok=True)
 
 st.title("My Discharge Summary 🚀")
 name = st.text_input("Patient's name")
