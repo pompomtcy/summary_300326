@@ -40,4 +40,8 @@ agree_case4 = st.checkbox("Refer IPD case")
 if agree_case4:
     extra_text41 = st.text_input("hospital:")
     extra_text42 = st.text_input("for:")
-
+agree_case5 = st.checkbox("D/C against advise") 
+if agree_case5:
+    extra_text5 = st.text_input("due to:")
+agree_case6 = st.checkbox("Death") 
+    
